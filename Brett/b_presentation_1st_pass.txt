@@ -1,0 +1,75 @@
+Hypothesis
+-What was the hypothesis you began the project with?
+	- We could use sentiment analysis in a machine learning model to help predict crude oil futures contract price. 
+
+- Where did you end?
+	- We ended with being able to get a predition one point in the future but more than just sentiment analysis was needed to do this. 
+ 
+- What adjustments, if any, did you make during the project once you confirmed the data you had available?
+	- Changing to just predicting direction rather than price
+	- Added more data source other than sentiment data to the features that our be features to our models
+	- Removing wanted data sources due to not being freely available and expensive to get
+		
+- Did you perform further adjustments after defining the modeling approach?
+	- ? I'm not sure we defined a modeling approach before we started?
+
+
+Data Acquisition / Cleanse / Preparation
+- What were your data source(s)
+	- Tweets from 10 oil experts as per two articles from Benziga.com in 2015 and Offshore Technology.com in 2019
+	- Front month contract data for crude oil from Yahoo Finance
+	- Invesco DB US Dollar Index Bullish Fund from Yahho Finance
+	- United States Oil Fund LP data from Yahoo Finance
+	- S&P GSCI Crude Oil Excess Return index from investing.com
+	- S&P GSCI Crude Oil Total Return index from investing.com
+
+- Below only pertains to effort for final approach, not for rejected approaches/models:
+	- What steps were necessary for data prep?
+		- Twitter Data
+			- combine tweets from all 10 experts to one df and remove website mentions from the data
+			- run Vader and Textblob sentiment analysis
+			- merge the output of the analysis with other data
+		- Yahoo Finance and Investing.com data
+			- get dates from the different websites into the same format and combine the data
+			- get the daily returns of CL and convert it to binary as it was our "target"
+
+	- Did you perform visualization steps to confirm data relationships? What were your findings / visualizations?
+		- This is where we can put a few of our two plot graphs in the presentation
+		- and/or we can use the correlation matrix from the model_selector file
+		- and/or the feature importance plot from the model_selector file
+
+		- findings
+			- uso, spgsciER and spgsciTR follow oil mimic oil too close to be of any significants
+			- the sentiment data wasn't as significant as first thought it would be
+			- we missed a few data inputs that we suspect would have had a great influence on the models
+				- weather, vehicle movement, and rig count
+ 
+	- Did you vary your prep based upon the modeling approach(es)? 
+		- ? I believe the answer is YES to this but I don't know enough about what Weidong did to his data?
+
+Model, Eval & Performance
+- What models were appropriate for the business outcomes?
+	- visual: AUC plot with below talking points
+		- compared 18 different models and multiple parameters for each to find the best model and parameters
+		- Top 3 were Graident Boosting, AdaBoosting, and Random Forest
+
+- What were the outcomes of your evaluation?
+	- potential visuals to use here:
+		- df_auc that shows the top 5 with AUC scores
+		- classification reports for the top 3 models
+
+- Did you take a step to optimize your parameters?
+	- Yes, we borrowed code that allowed for looping through multiple parameters within each model to determine the best performing parameters for each model.
+	- visual for this: image of a part of the parameters code along with an image of best params output for top 3
+
+- What were the final evaluation metrics for your final consideration set of models? 
+	- this is answer with the above question
+
+Visualizations
+- Show the final metrics
+	- AUC / ROC
+	- Classification Report
+		- both are shown above as our code looped the parameters so we only have 1 AUC/ROC and classification report for the best parameters for the 18 models
+
+- Key results taken from your final metrics
+	? - I believe this needs to be a holistic view of our project which I don't have due to not having detailed understanding of Weidong's neural network stuff  
